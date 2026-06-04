@@ -22,14 +22,14 @@ class EmployeeFactory extends Factory
      */
     public function definition(): array
     {
-        $department = fake()->randomElement(Employee::DEPARTMENTS);
+        $department = $this->faker->randomElement(Employee::DEPARTMENTS);
 
         return [
-            'name' => fake()->name(),
-            'position' => fake()->jobTitle(),
+            'name' => $this->faker->name(),
+            'position' => $this->faker->jobTitle(),
             'department' => $department,
-            'hire_date' => fake()->dateTimeBetween('-2 years', 'now')->format('Y-m-d'),
-            'salary' => fake()->numberBetween(30000, 100000),
+            'hire_date' => $this->faker->dateTimeBetween('-2 years', 'now')->format('Y-m-d'),
+            'salary' => $this->faker->numberBetween(30000, 100000),
         ];
     }
 

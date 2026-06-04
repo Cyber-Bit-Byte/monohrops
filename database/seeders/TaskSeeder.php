@@ -32,7 +32,7 @@ class TaskSeeder extends Seeder
             $numTasks = rand(3, 10);
             
             for ($i = 0; $i < $numTasks; $i++) {
-                $taskType = fake()->randomElement(array_keys($taskTypes));
+                $taskType = $this->faker->randomElement(array_keys($taskTypes));
                 $dueDate = $startDate->copy()->addDays(rand(0, $startDate->diffInDays($endDate)));
                 
                 \App\Models\Task::create([
@@ -40,7 +40,7 @@ class TaskSeeder extends Seeder
                     'title' => $taskType,
                     'description' => $taskTypes[$taskType],
                     'due_date' => $dueDate->format('Y-m-d'),
-                    'status' => fake()->randomElement($statuses),
+                    'status' => $this->faker->randomElement($statuses),
                 ]);
             }
         }

@@ -72,6 +72,46 @@ class User extends Authenticatable
         return $this->role === 'employee';
     }
 
+    /**
+     * Check if user is developer.
+     */
+    public function isDeveloper(): bool
+    {
+        return $this->role === 'developer';
+    }
+
+    /**
+     * Check if user is administrative.
+     */
+    public function isAdministrative(): bool
+    {
+        return $this->role === 'administrative';
+    }
+
+    /**
+     * Check if user is team-lead.
+     */
+    public function isTeamLead(): bool
+    {
+        return $this->role === 'team-lead';
+    }
+
+    /**
+     * Check if user is client.
+     */
+    public function isClient(): bool
+    {
+        return $this->role === 'client';
+    }
+
+    /**
+     * Check if user is visitor.
+     */
+    public function isVisitor(): bool
+    {
+        return $this->role === 'visitor';
+    }
+
     public function employee()
     {
         return $this->hasOne(Employee::class);

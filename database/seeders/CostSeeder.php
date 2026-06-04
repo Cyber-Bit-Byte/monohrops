@@ -23,13 +23,13 @@ class CostSeeder extends Seeder
                 $date = $startDate->copy()->addDays(rand(0, $startDate->diffInDays($endDate)));
                 
                 \App\Models\Cost::create([
-                    'description' => fake()->sentence(4),
+                    'description' => $this->faker->sentence(4),
                     'amount' => rand(100, 5000),
                     'date' => $date->format('Y-m-d'),
-                    'cost_type' => fake()->randomElement($costTypes),
+                    'cost_type' => $this->faker->randomElement($costTypes),
                     'employee_id' => $employee->id,
                     'department_id' => $employee->department_id,
-                    'notes' => fake()->paragraph(),
+                    'notes' => $this->faker->paragraph(),
                 ]);
             }
         }

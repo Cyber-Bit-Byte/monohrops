@@ -25,6 +25,11 @@
                         <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
                         <option value="manager" {{ $user->role == 'manager' ? 'selected' : '' }}>Manager</option>
                         <option value="employee" {{ $user->role == 'employee' ? 'selected' : '' }}>Employee</option>
+                        <option value="developer" {{ $user->role == 'developer' ? 'selected' : '' }}>Developer</option>
+                        <option value="administrative" {{ $user->role == 'administrative' ? 'selected' : '' }}>Administrative</option>
+                        <option value="team-lead" {{ $user->role == 'team-lead' ? 'selected' : '' }}>Team Lead</option>
+                        <option value="client" {{ $user->role == 'client' ? 'selected' : '' }}>Client</option>
+                        <option value="visitor" {{ $user->role == 'visitor' ? 'selected' : '' }}>Visitor</option>
                     </select>
                     @error('role') <div class="text-red-500">{{ $message }}</div> @enderror
                 </div>

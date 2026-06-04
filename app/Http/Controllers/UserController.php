@@ -33,7 +33,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
-            'role' => 'required|in:admin,manager,employee',
+            'role' => 'required|in:admin,manager,employee,developer,administrative,team-lead,client,visitor',
         ]);
 
         User::create([
@@ -69,7 +69,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
-            'role' => 'required|in:admin,manager,employee',
+            'role' => 'required|in:admin,manager,employee,developer,administrative,team-lead,client,visitor',
         ]);
 
         $user->update($request->only('name', 'email', 'role'));

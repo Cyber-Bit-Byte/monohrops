@@ -33,6 +33,11 @@
                         <option value="admin">Admin</option>
                         <option value="manager">Manager</option>
                         <option value="employee">Employee</option>
+                        <option value="developer">Developer</option>
+                        <option value="administrative">Administrative</option>
+                        <option value="team-lead">Team Lead</option>
+                        <option value="client">Client</option>
+                        <option value="visitor">Visitor</option>
                     </select>
                     @error('role') <div class="text-red-500">{{ $message }}</div> @enderror
                 </div>

@@ -25,10 +25,10 @@ class EarningSeeder extends Seeder
                 \App\Models\Earning::create([
                     'employee_id' => $employee->id,
                     'department_id' => $employee->department_id,
-                    'type' => fake()->randomElement($earningTypes),
+                    'type' => $this->faker->randomElement($earningTypes),
                     'amount' => rand(1000, 10000),
                     'date' => $date->format('Y-m-d'),
-                    'notes' => fake()->sentence(),
+                    'notes' => $this->faker->sentence(),
                 ]);
             }
         }
