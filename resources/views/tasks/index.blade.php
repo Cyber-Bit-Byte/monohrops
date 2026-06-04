@@ -52,7 +52,7 @@
                 <table class="min-w-full table-auto mt-4">
                     <thead>
                         <tr>
-                            <th class="px-4 py-2">{{ __('Creator') }}</th>
+                            {{-- <th class="px-4 py-2">{{ __('Creator') }}</th> --}}
                             <th class="px-4 py-2">{{ __('Assignee') }}</th>
                             <th class="px-4 py-2">{{ __('Department') }}</th>
                             <th class="px-4 py-2">{{ __('Task Type') }}</th>
@@ -65,7 +65,7 @@
                     <tbody>
                         @foreach($tasks as $task)
                             <tr>
-                                <td class="border px-4 py-2">{{ $task->employee->name }}</td>
+                                {{-- <td class="border px-4 py-2">{{ $task->employee->id }}</td> --}}
                                 <td class="border px-4 py-2">{{ $task->assignee->name ?? '-' }}</td>
                                 <td class="border px-4 py-2">{{ $task->department->name ?? '-' }}</td>
                                 <td class="border px-4 py-2">{{ $task->taskType->name ?? '-' }}</td>

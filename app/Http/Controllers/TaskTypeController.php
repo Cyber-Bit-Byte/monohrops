@@ -8,21 +8,23 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskTypeController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(function ($request, $next) {
-            if (!Auth::user()->isAdmin()) {
-                abort(403, 'Unauthorized');
-            }
-            return $next($request);
-        });
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware(function ($request, $next) {
+    //         if (!Auth::user()->isAdmin()) {
+    //             abort(403, 'Unauthorized');
+    //         }
+    //         return $next($request);
+    //     });
+    // }
 
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $this->authorizeAdminOrManager();
+
         $taskTypes = TaskType::orderBy('name')->paginate(10);
 
         return view('task-types.index', compact('taskTypes'));
@@ -33,6 +35,8 @@ class TaskTypeController extends Controller
      */
     public function create()
     {
+        $this->authorizeAdminOrManager();
+
         return view('task-types.create');
     }
 
@@ -41,6 +45,8 @@ class TaskTypeController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorizeAdminOrManager();
+
         $request->validate([
             'name' => 'required|string|max:255|unique:task_types',
         ]);
@@ -55,6 +61,8 @@ class TaskTypeController extends Controller
      */
     public function show(TaskType $taskType)
     {
+        $this->authorizeAdminOrManager();
+
         return view('task-types.show', compact('taskType'));
     }
 
@@ -63,6 +71,8 @@ class TaskTypeController extends Controller
      */
     public function edit(TaskType $taskType)
     {
+        $this->authorizeAdminOrManager();
+
         return view('task-types.edit', compact('taskType'));
     }
 
@@ -71,6 +81,8 @@ class TaskTypeController extends Controller
      */
     public function update(Request $request, TaskType $taskType)
     {
+        $this->authorizeAdminOrManager();
+
         $request->validate([
             'name' => 'required|string|max:255|unique:task_types,name,' . $taskType->id,
         ]);
@@ -85,6 +97,8 @@ class TaskTypeController extends Controller
      */
     public function destroy(TaskType $taskType)
     {
+        $this->authorizeAdminOrManager();
+
         $taskType->delete();
 
         return redirect()->route('task-types.index')->with('success', 'Task type deleted successfully.');
