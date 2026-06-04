@@ -11,13 +11,13 @@
 
                     <div class="mb-4">
                         <label for="employee_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('Assignee') }}</label>
-                        <select id="employee_id" name="employee_id" class="mt-1 block w-full" required>
+                        <select id="assignee_id" name="assignee_id" class="mt-1 block w-full" required>
                             <option value="">{{ __('Select assignee') }}</option>
                             @foreach($employees as $employee)
-                                <option value="{{ $employee->id }}" {{ old('employee_id') == $employee->id ? 'selected' : '' }}>{{ $employee->name }}</option>
+                                <option value="{{ $employee->id }}" {{ old('assignee_id') == $employee->id ? 'selected' : '' }}>{{ $employee->name }}</option>
                             @endforeach
                         </select>
-                        @error('employee_id') <div class="text-red-500">{{ $message }}</div> @enderror
+                        @error('assignee_id') <div class="text-red-500">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="mb-4">

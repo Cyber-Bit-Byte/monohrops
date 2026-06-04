@@ -19,8 +19,8 @@ class TaskController extends Controller
             $query->where('department_id', $request->input('department_id'));
         }
 
-        if ($request->filled('task_type')) {
-            $query->where('task_type', $request->input('task_type'));
+        if ($request->filled('task_type_id')) {
+            $query->where('task_type_id', $request->input('task_type_id'));
         }
 
         if ($request->filled('status')) {
@@ -45,7 +45,7 @@ class TaskController extends Controller
             });
         }
 
-        $tasks = $query->paginate(10)->appends($request->only(['department_id', 'task_type', 'status', 'from_date', 'to_date']));
+        $tasks = $query->paginate(10)->appends($request->only(['department_id', 'task_type_id', 'status', 'from_date', 'to_date']));
         $departments = Department::orderBy('name')->get();
 
         return view('tasks.index', compact('tasks', 'departments'));

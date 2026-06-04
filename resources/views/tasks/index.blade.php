@@ -18,21 +18,21 @@
                         </select>
                     </div>
                     <div>
-                        <label for="task_type" class="block text-sm font-medium">{{ __('Task Type') }}</label>
-                        <select name="task_type" id="task_type" class="border rounded px-2 py-1 w-full">
+                        <label for="task_type_id" class="block text-sm font-medium">{{ __('Task Type') }}</label>
+                        <select name="task_type_id" id="task_type_id" class="border rounded px-2 py-1 w-full">
                             <option value="">{{ __('All Task Types') }}</option>
-                            <option value="write script" {{ request('task_type') == 'write script' ? 'selected' : '' }}>Write Script</option>
-                            <option value="record video" {{ request('task_type') == 'record video' ? 'selected' : '' }}>Record Video</option>
-                            <option value="edit video" {{ request('task_type') == 'edit video' ? 'selected' : '' }}>Edit Video</option>
-                            <option value="publish video" {{ request('task_type') == 'publish video' ? 'selected' : '' }}>Publish Video</option>
-                            <option value="video upload" {{ request('task_type') == 'video upload' ? 'selected' : '' }}>Video Upload</option>
-                            <option value="graphic post" {{ request('task_type') == 'graphic post' ? 'selected' : '' }}>Graphic Post</option>
-                            <option value="publish news" {{ request('task_type') == 'publish news' ? 'selected' : '' }}>Publish News</option>
-                            <option value="purchase ingredients" {{ request('task_type') == 'purchase ingredients' ? 'selected' : '' }}>Purchase Ingredients</option>
-                            <option value="purchase instrument" {{ request('task_type') == 'purchase instrument' ? 'selected' : '' }}>Purchase Instrument</option>
-                            <option value="bajar" {{ request('task_type') == 'bajar' ? 'selected' : '' }}>Bajar</option>
-                            <option value="contact" {{ request('task_type') == 'contact' ? 'selected' : '' }}>Contact</option>
-                            <option value="others" {{ request('task_type') == 'others' ? 'selected' : '' }}>Others</option>
+                            <option value="write script" {{ request('task_type_id') == 'write script' ? 'selected' : '' }}>Write Script</option>
+                            <option value="record video" {{ request('task_type_id') == 'record video' ? 'selected' : '' }}>Record Video</option>
+                            <option value="edit video" {{ request('task_type_id') == 'edit video' ? 'selected' : '' }}>Edit Video</option>
+                            <option value="publish video" {{ request('task_type_id') == 'publish video' ? 'selected' : '' }}>Publish Video</option>
+                            <option value="video upload" {{ request('task_type_id') == 'video upload' ? 'selected' : '' }}>Video Upload</option>
+                            <option value="graphic post" {{ request('task_type_id') == 'graphic post' ? 'selected' : '' }}>Graphic Post</option>
+                            <option value="publish news" {{ request('task_type_id') == 'publish news' ? 'selected' : '' }}>Publish News</option>
+                            <option value="purchase ingredients" {{ request('task_type_id') == 'purchase ingredients' ? 'selected' : '' }}>Purchase Ingredients</option>
+                            <option value="purchase instrument" {{ request('task_type_id') == 'purchase instrument' ? 'selected' : '' }}>Purchase Instrument</option>
+                            <option value="bajar" {{ request('task_type_id') == 'bajar' ? 'selected' : '' }}>Bajar</option>
+                            <option value="contact" {{ request('task_type_id') == 'contact' ? 'selected' : '' }}>Contact</option>
+                            <option value="others" {{ request('task_type_id') == 'others' ? 'selected' : '' }}>Others</option>
                         </select>
                     </div>
                     <div>
@@ -77,7 +77,7 @@
                                 <td class="border px-4 py-2">{{ $task->employee->name }}</td>
                                 <td class="border px-4 py-2">{{ $task->assignee->name ?? '-' }}</td>
                                 <td class="border px-4 py-2">{{ $task->department->name ?? '-' }}</td>
-                                <td class="border px-4 py-2">{{ $task->task_type ?: '-' }}</td>
+                                <td class="border px-4 py-2">{{ $task->task_type_id ?: '-' }}</td>
                                 <td class="border px-4 py-2">{{ $task->title }}</td>
                                 <td class="border px-4 py-2">{{ $task->due_date->format('Y-m-d') }}</td>
                                 <td class="border px-4 py-2">{{ $task->status }}</td>
