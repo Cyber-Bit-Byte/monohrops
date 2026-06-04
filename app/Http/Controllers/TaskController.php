@@ -13,7 +13,7 @@ class TaskController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Task::with(['employee', 'assignee', 'department'])->orderBy('due_date');
+        $query = Task::with(['employee', 'assignee', 'department','taskType'])->orderBy('due_date');
 
         if ($request->filled('department_id')) {
             $query->where('department_id', $request->input('department_id'));
@@ -45,10 +45,11 @@ class TaskController extends Controller
             });
         }
 
-        $tasks = $query->paginate(10)->appends($request->only(['department_id', 'task_type_id', 'status', 'from_date', 'to_date']));
+        $tasks = $query->paginate(50)->appends($request->only(['department_id', 'task_type_id', 'status', 'from_date', 'to_date']));
         $departments = Department::orderBy('name')->get();
-
-        return view('tasks.index', compact('tasks', 'departments'));
+        $taskTypes = TaskType::orderBy('name')->get();
+        // dd( $tasks);
+        return view('tasks.index', compact('tasks', 'departments','taskTypes'));
     }
 
     public function create()
