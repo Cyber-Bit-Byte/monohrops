@@ -32,7 +32,12 @@ require __DIR__.'/auth.php';
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $employees_count = App\Models\Employee::count();
+        $salaries_count = App\Models\Salary::count();
+        $tasks_count = App\Models\Task::count();
+        $costs_count = App\Models\Cost::count();
+
+        return view('dashboard', compact('employees_count', 'salaries_count', 'tasks_count', 'costs_count'));
     })->name('dashboard');
 
     Route::post('/theme/set', function (Request $request) {
